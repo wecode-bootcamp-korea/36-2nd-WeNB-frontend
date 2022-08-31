@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "src": "./images/Detail/icons/computer.png",
+    "name": "업무 전용 공간"
+  },
+  { "id": 2, "src": "./images/Detail/icons/cooking.png", "name": "주방" },
+  { "id": 3, "src": "./images/Detail/icons/snowflake.png", "name": "에어컨" },
+  { "id": 4, "src": "./images/Detail/icons/wifi.png", "name": "와이파이" },
+  { "id": 5, "src": "./images/Detail/icons/tv.png", "name": "TV" },
+  { "id": 6, "src": "./images/Detail/icons/laundry.png", "name": "세탁기" },
+  {
+    "id": 7,
+    "src": "./images/Detail/icons/barbeque.png",
+    "name": "바베큐 그릴"
+  },
+  {
+    "id": 8,
+    "src": "./images/Detail/icons/parking.png",
+    "name": "건물 내 무료 주차"
+  }
+]
