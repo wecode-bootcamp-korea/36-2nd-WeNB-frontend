@@ -1,7 +1,13 @@
 import React from 'react';
+import Nav from '../../../src/components/Nav/Nav';
 
 const Main = () => {
-  return <div>main</div>;
+  return (
+    <>
+      <Nav />
+      <div>Main</div>
+    </>
+  );
 };
 
 export default Main;
