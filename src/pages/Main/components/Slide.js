@@ -29,17 +29,17 @@ const StyledSlide = styled(slider)`
 
   .slick-list {
     width: 100%;
-    z-index: 100;
+    z-index: 1;
     overflow: hidden;
   }
 
   .slick-prev {
-    z-index: 9999;
+    z-index: 3;
     width: 50px !important;
     opacity: 0;
   }
   .slick-next {
-    z-index: 9999;
+    z-index: 3;
     width: 50px !important;
     opacity: 0;
   }
@@ -73,7 +73,7 @@ const StyledSlide = styled(slider)`
   }
 
   .slick-dots {
-    z-index: 999;
+    z-index: 2;
     position: absolute;
     bottom: 10px;
 

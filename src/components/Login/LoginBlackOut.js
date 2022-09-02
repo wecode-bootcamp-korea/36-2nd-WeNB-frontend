@@ -7,9 +7,9 @@ const LoginBlackOutBox = styled.div`
   position: fixed;
   left: 50%;
   top: 50%;
-  background-color: rgba(0, 0, 0, 0.65);
   transform: translate(-50%, -50%);
-  z-index: 14;
+  z-index: 12;
+  background-color: rgba(0, 0, 0, 0.65);
 `;
 
 const LoginBlackOut = ({

@@ -44,7 +44,7 @@ const LoginModalWrap = styled.div`
   border: 1px solid #e8e8e8;
   background-color: white;
   overflow: hidden;
-  z-index: 2;
+  z-index: 16;
 `;
 
 const LoginTitle = styled.div`

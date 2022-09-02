@@ -5,6 +5,8 @@ import LoginBlackOut from '../../Login/components/LoginBlackOut';
 import variables from '../../../styles/variables';
 
 const NavUserMenu = () => {
+  const tokenPossession = localStorage.getItem('TOKEN');
+
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const onSetIsLoginVisible = () => {
     setIsLoginVisible(prev => !prev);
@@ -36,13 +38,21 @@ const NavUserMenu = () => {
 
   return (
     <NavUserContainer>
-      <NavLoginLinkBox onClick={() => onSetIsLoginVisible()}>
-        로그인
-      </NavLoginLinkBox>
-      <NavSignupLinkBox onClick={() => onSetSingupVisible()}>
-        회원가입
-      </NavSignupLinkBox>
-      <NavLogoutBox onClick={logoutHandle}>로그아웃</NavLogoutBox>
+      {!tokenPossession && (
+        <NavLoginLinkBox onClick={() => onSetIsLoginVisible()}>
+          로그인
+        </NavLoginLinkBox>
+      )}
+      {!tokenPossession && (
+        <NavSignupLinkBox onClick={() => onSetSingupVisible()}>
+          회원가입
+        </NavSignupLinkBox>
+      )}
+      {tokenPossession && (
+        <NavLogoutBox NavLogoutBox onClick={logoutHandle}>
+          로그아웃
+        </NavLogoutBox>
+      )}
       {isLoginVisible && (
         <Login type="login" onSetIsLoginVisible={onSetIsLoginVisible} />
       )}
@@ -62,7 +72,7 @@ const NavUserMenu = () => {
 export default NavUserMenu;
 
 const NavUserContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 200px;
   padding: 10px 0;
@@ -70,6 +80,8 @@ const NavUserContainer = styled.div`
   border-radius: 10px;
   border: 1px solid #e8e8e8;
   box-shadow: 0px 0px 9px 3px rgba(94, 94, 94, 0.21);
+  z-index: 11;
+  background-color: white;
 `;
 
 const NavLoginLinkBox = styled.div`
