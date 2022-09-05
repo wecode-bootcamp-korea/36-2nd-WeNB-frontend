@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Title from './components/Title';
 import Photos from './components/Photos';
@@ -10,17 +10,57 @@ import Guidelines from './components/Guidelines';
 import Nav from '../../../src/components/Nav/Nav';
 
 const Detail = () => {
+  const [placeInfo, setPlaceInfo] = useState({
+    id: '',
+    name: '',
+    price: '',
+    max_capacity: '',
+    latitude: '',
+    longitude: '',
+    available_from: '',
+    available_until: '',
+    max_days: '',
+    image_urls: [''],
+    reviews: [{}],
+    amenities: [{}],
+  });
+  const [reviewModal, setReviewModal] = useState(false);
+
+  useEffect(() => {
+    fetch('./data/Detail/placeInfo.json')
+      .then(response => response.json())
+      .then(data => setPlaceInfo(data[0]));
+  }, []);
+
+  const handleSeeMoreReviews = () => {
+    setReviewModal(!reviewModal);
+    window.scroll(2100, 2100);
+  };
+
+  const handleXClickReviews = () => {
+    setReviewModal(!reviewModal);
+  };
   return (
     <>
       <Nav />
       <DetailMainContainer>
         <DetailSubContainer>
-          <Title />
+          <Title
+            placeInfo={placeInfo}
+            reviewModal={reviewModal}
+            handleSeeMoreReviews={handleSeeMoreReviews}
+            handleXClickReviews={handleXClickReviews}
+          />
           <Photos />
           <Contents />
-          <Reviews />
+          <Reviews
+            placeInfo={placeInfo}
+            reviewModal={reviewModal}
+            handleSeeMoreReviews={handleSeeMoreReviews}
+            handleXClickReviews={handleXClickReviews}
+          />
           <Map />
-          <HostInfo />
+          <HostInfo placeInfo={placeInfo} />
           <Guidelines />
         </DetailSubContainer>
       </DetailMainContainer>

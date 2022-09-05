@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMedal, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 
-function HostInfo() {
+function HostInfo({ placeInfo }) {
   return (
     <HostInfoContainer>
       <HostInfoTitle>
@@ -18,7 +18,7 @@ function HostInfo() {
           <HostDescriptionNav>
             <HostRating>
               <HostStar src="./images/Detail/icons/star.png" alt="star" />
-              <NumberRatings>후기 50개</NumberRatings>
+              <NumberRatings>{placeInfo.reviews.length}</NumberRatings>
             </HostRating>
             <HostRating>
               <FontAwesomeIcon className="medalIcon" icon={faMedal} />

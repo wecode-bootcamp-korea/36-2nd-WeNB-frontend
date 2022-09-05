@@ -6,20 +6,32 @@ import {
   faMedal,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import ReviewModal from './Modals/ReviewModal';
 
-function Title() {
+function Title({
+  handleSeeMoreReviews,
+  handleXClickReviews,
+  placeInfo,
+  reviewModal,
+}) {
   return (
     <TitleContainer>
-      <TitleName>🌈선릉하우스🍀선릉역3분/넷플릭스</TitleName>
+      <TitleName>{placeInfo.name}</TitleName>
       <TitleNav>
         <TitleNavLeft>
           <TitleRating>
             <Star src="./images/Detail/icons/star.png" />
             <Number>5.0</Number>
           </TitleRating>
-          <TitleReviews>
-            후기 <NumReview>824</NumReview>개
+          <TitleReviews onClick={handleSeeMoreReviews}>
+            후기 <NumReview>{placeInfo.reviews.length}</NumReview>개
           </TitleReviews>
+          {reviewModal === true && (
+            <ReviewModal
+              reviewsList={placeInfo.reviews}
+              handleXClick={handleXClickReviews}
+            />
+          )}
           <TitleSuperHostContainer>
             <FontAwesomeIcon className="icon" icon={faMedal} />
             <Host>슈퍼호스트</Host>
