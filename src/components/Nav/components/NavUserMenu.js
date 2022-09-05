@@ -1,13 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Login from '../../Login/Login';
+import LoginBlackOut from '../../Login/components/LoginBlackOut';
 import variables from '../../../styles/variables';
 
 const NavUserMenu = () => {
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const onSetIsLoginVisible = () => {
+    setIsLoginVisible(prev => !prev);
+  };
+
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
+  const onSetSingupVisible = () => {
+    setIsSignupVisible(prev => !prev);
+  };
+
+  const logoutHandle = () => {
+    fetch(`http://10.58.4.138:3000/kakao/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('TOKEN'),
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'success') {
+          localStorage.removeItem('TOKEN');
+          alert('로그아웃 성공');
+        } else {
+          alert('로그아웃 실패');
+        }
+      });
+  };
+
   return (
     <NavUserContainer>
-      <NavLoginLinkBox>로그인</NavLoginLinkBox>
-      <NavSignupLinkBox>회원가입</NavSignupLinkBox>
-      <NavLogoutBox>로그아웃</NavLogoutBox>
+      <NavLoginLinkBox onClick={() => onSetIsLoginVisible()}>
+        로그인
+      </NavLoginLinkBox>
+      <NavSignupLinkBox onClick={() => onSetSingupVisible()}>
+        회원가입
+      </NavSignupLinkBox>
+      <NavLogoutBox onClick={logoutHandle}>로그아웃</NavLogoutBox>
+      {isLoginVisible && (
+        <Login type="login" onSetIsLoginVisible={onSetIsLoginVisible} />
+      )}
+      {isSignupVisible && (
+        <Login type="signup" onSetSingupVisible={onSetSingupVisible} />
+      )}
+      {isLoginVisible && (
+        <LoginBlackOut type="login" onSetIsLoginVisible={onSetIsLoginVisible} />
+      )}
+      {isSignupVisible && (
+        <LoginBlackOut type="signup" onSetSingupVisible={onSetSingupVisible} />
+      )}
     </NavUserContainer>
   );
 };
