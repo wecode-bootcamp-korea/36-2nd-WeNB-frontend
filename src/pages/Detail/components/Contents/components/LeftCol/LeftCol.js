@@ -5,7 +5,6 @@ import ContentAmenitiesInfo from './components/ContentAmenitiesInfo';
 import ContentWeCoverInfo from './components/ContentWeCoverInfo';
 import ContentTitleInfo from './components/ContentTitleInfo';
 import ContentCalendar from './components/ContentCalendar';
-import 'react-day-picker/dist/style.css';
 
 function LeftCol() {
   return (

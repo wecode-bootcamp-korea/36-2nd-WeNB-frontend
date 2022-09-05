@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { KAKAO_AUTH_URL } from './components/Oauth.env';
 import variables from '../../styles/variables';
 
 const Login = ({ onSetIsLoginVisible, onSetSingupVisible, type }) => {
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
+
   return (
     <LoginModalWrap>
       <LoginTitle>
