@@ -7,12 +7,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import ReviewModal from './Modals/ReviewModal';
+import MapModal from './MapModal';
 
 function Title({
   handleSeeMoreReviews,
   handleXClickReviews,
   placeInfo,
   reviewModal,
+  mapModal,
+  handleSeeMoreMap,
+  handleGoBackMap,
 }) {
   return (
     <TitleContainer>
@@ -36,7 +40,10 @@ function Title({
             <FontAwesomeIcon className="icon" icon={faMedal} />
             <Host>슈퍼호스트</Host>
           </TitleSuperHostContainer>
-          <TitleLocation>강남구, 서울, 한국</TitleLocation>
+          <TitleLocation onClick={handleSeeMoreMap}>
+            강남구, 서울, 한국
+          </TitleLocation>
+          {mapModal === true && <MapModal handleGoBackMap={handleGoBackMap} />}
         </TitleNavLeft>
         <TitleNavRight>
           <TitleShareContainer>
