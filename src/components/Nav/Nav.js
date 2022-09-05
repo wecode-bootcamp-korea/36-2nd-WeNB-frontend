@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import NavUserMenu from './components/NavUserMenu';
 import variables from '../../styles/variables';
@@ -8,10 +9,14 @@ const Nav = () => {
   const onSetIsUserVisible = () => {
     setIsUserVisible(prev => !prev);
   };
+  const navigate = useNavigate();
+  const goToMain = () => {
+    navigate('/');
+  };
   return (
     <>
       <NavContainer>
-        <NavLogoBox>wenb</NavLogoBox>
+        <NavLogoBox onClick={goToMain}>wenb</NavLogoBox>
         <NavFilterBox>
           <NavSearchBoxTest>나에게 딱 맞는 숙소 찾기</NavSearchBoxTest>
           <NavSearchIcon>

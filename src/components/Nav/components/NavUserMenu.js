@@ -62,13 +62,14 @@ const NavUserMenu = () => {
 export default NavUserMenu;
 
 const NavUserContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 200px;
   padding: 10px 0;
   margin-right: 80px;
   border-radius: 10px;
   border: 1px solid #e8e8e8;
+  background-color: white;
   box-shadow: 0px 0px 9px 3px rgba(94, 94, 94, 0.21);
 `;
 
