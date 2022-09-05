@@ -25,11 +25,19 @@ const Detail = () => {
     amenities: [{}],
   });
   const [reviewModal, setReviewModal] = useState(false);
+  const [mapModal, setMapModal] = useState(false);
 
   useEffect(() => {
-    fetch('./data/Detail/placeInfo.json')
+    fetch('./data/Detail/placeInfo.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(response => response.json())
-      .then(data => setPlaceInfo(data[0]));
+      .then(data => {
+        setPlaceInfo(data[0]);
+      });
   }, []);
 
   const handleSeeMoreReviews = () => {
@@ -39,6 +47,16 @@ const Detail = () => {
 
   const handleXClickReviews = () => {
     setReviewModal(!reviewModal);
+  };
+
+  const handleSeeMoreMap = () => {
+    setMapModal(!mapModal);
+    window.scroll(0, 0);
+  };
+
+  const handleGoBackMap = () => {
+    setMapModal(!mapModal);
+    window.scroll(2800, 2800);
   };
   return (
     <>
@@ -50,6 +68,9 @@ const Detail = () => {
             reviewModal={reviewModal}
             handleSeeMoreReviews={handleSeeMoreReviews}
             handleXClickReviews={handleXClickReviews}
+            mapModal={mapModal}
+            handleSeeMoreMap={handleSeeMoreMap}
+            handleGoBackMap={handleGoBackMap}
           />
           <Photos />
           <Contents />
@@ -59,7 +80,12 @@ const Detail = () => {
             handleSeeMoreReviews={handleSeeMoreReviews}
             handleXClickReviews={handleXClickReviews}
           />
-          <Map />
+          <Map
+            placeInfo={placeInfo}
+            mapModal={mapModal}
+            handleSeeMoreMap={handleSeeMoreMap}
+            handleGoBackMap={handleGoBackMap}
+          />
           <HostInfo placeInfo={placeInfo} />
           <Guidelines />
         </DetailSubContainer>
