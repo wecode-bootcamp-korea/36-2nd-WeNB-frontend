@@ -1,7 +1,8 @@
 import React from 'react';
+import HostSignUp from './HostSignUp/HostSignUp';
 
 const Host = () => {
-  return <div>Host</div>;
+  return <HostSignUp />;
 };
 
 export default Host;
