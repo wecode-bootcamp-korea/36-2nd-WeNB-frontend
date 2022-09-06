@@ -6,6 +6,9 @@ import Main from './pages/Main/Main';
 import Detail from './pages/Detail/Detail';
 import Host from './pages/Host/Host';
 import KakaoLoding from './components/Login/components/KakaoLoding';
+import HostPostInfo from './pages/Host/HostPostInfo/HostPostInfo';
+import HostFacilities from './pages/Host/HostFacilities/HostFacilities';
+import HostPostImage from './pages/Host/HostPostImage/HostPostImage';
 
 const Router = () => {
   return (
@@ -15,6 +18,12 @@ const Router = () => {
           <Route path="/" element={<Main />} />
           <Route path="/Detail" element={<Detail />} />
           <Route path="/Host" element={<Host />} />
+          <Route path="/HostPostInfo" element={<HostPostInfo />} />
+          <Route
+            path="/HostPostFacility/:placeID"
+            element={<HostFacilities />}
+          />
+          <Route path="/HostPostImage" element={<HostPostImage />} />
           <Route path="/kakao" element={<KakaoLoding />} />
         </Routes>
       </BrowserRouter>
