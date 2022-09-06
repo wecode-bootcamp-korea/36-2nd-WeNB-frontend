@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ReviewModal from './Modals/ReviewModal';
 
@@ -8,14 +8,6 @@ function Reviews({
   handleSeeMoreReviews,
   handleXClickReviews,
 }) {
-  const [reviewsList, setReviewsList] = useState([]);
-
-  useEffect(() => {
-    fetch('./data/Detail/reviewsList.json')
-      .then(response => response.json())
-      .then(data => setReviewsList(data));
-  }, []);
-
   return (
     <ReviewsContainer>
       <ReviewsTitle>
@@ -63,7 +55,7 @@ function Reviews({
             <ReviewInnerContainer>
               <ReviewContentContainer>
                 <ReviewContentTitle>
-                  <ReviewUser src="./images/Detail/uniyul.jpg" />
+                  <ReviewUser src="./images/Detail/hostProfile.jpg" />
                   <ReviewUserInfo>
                     <ReviewUserName>Anonymous</ReviewUserName>
                     <ReviewDate>2022년 9월</ReviewDate>
@@ -90,8 +82,8 @@ function Reviews({
         </SeeMore>
         {reviewModal === true && (
           <ReviewModal
-            reviewsList={reviewsList}
             handleXClickReviews={handleXClickReviews}
+            reviewsList={placeInfo.reviews}
           />
         )}
       </ReviewBottom>
@@ -107,6 +99,7 @@ const ReviewsContainer = styled.div`
   padding-top: 48px;
   border-top: 0.8px solid #95a5a6;
   border-bottom: 0.8px solid #95a5a6;
+  z-index: 1;
 `;
 
 const ReviewsTitle = styled.div`

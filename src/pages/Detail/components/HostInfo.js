@@ -7,7 +7,10 @@ function HostInfo({ placeInfo }) {
   return (
     <HostInfoContainer>
       <HostInfoTitle>
-        <HostInfoProfile src="./images/Detail/uniyul.jpg" alt="userProfile" />
+        <HostInfoProfile
+          src="./images/Detail/hostProfile.jpg"
+          alt="userProfile"
+        />
         <HostInfoName>
           <HostName>호스트: Uniyul님</HostName>
           <MemberSince>회원 가입일: 2022년 1월</MemberSince>
@@ -18,7 +21,7 @@ function HostInfo({ placeInfo }) {
           <HostDescriptionNav>
             <HostRating>
               <HostStar src="./images/Detail/icons/star.png" alt="star" />
-              <NumberRatings>{placeInfo.reviews.length}</NumberRatings>
+              <NumberRatings>후기 {placeInfo.reviews.length}개</NumberRatings>
             </HostRating>
             <HostRating>
               <FontAwesomeIcon className="medalIcon" icon={faMedal} />
