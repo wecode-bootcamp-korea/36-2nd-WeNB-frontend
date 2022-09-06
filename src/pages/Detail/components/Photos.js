@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-function Photos() {
+function Photos({ homePhotos }) {
   const [photos, setPhotos] = useState([{ id: '', src: '' }]);
 
   useEffect(() => {
@@ -10,16 +10,14 @@ function Photos() {
       .then(data => setPhotos(data));
   }, []);
 
-  const homePhotosRight = photos.slice(1);
-
   return (
     <PhotoContainer>
       <InnerContainer>
         <PhotoLeft>
-          <Photo className="photoLeft" src={photos[0]?.src} />
+          <Photo className="photoLeft" src={homePhotos[0]} />
         </PhotoLeft>
         <PhotoRight>
-          {homePhotosRight.map(photo => (
+          {photos.map(photo => (
             <PhotoOne key={photo.id}>
               <Photo src={photo.src} />
             </PhotoOne>
@@ -64,10 +62,6 @@ const Photo = styled.img`
   height: 100%;
   object-fit: cover;
   cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.9);
-  }
 `;
 
 const PhotoRight = styled.div`
@@ -84,10 +78,6 @@ const PhotoOne = styled.div`
   height: 272.5px;
   object-fit: cover;
   cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.9);
-  }
 `;
 
 const PhotoButton = styled.button`

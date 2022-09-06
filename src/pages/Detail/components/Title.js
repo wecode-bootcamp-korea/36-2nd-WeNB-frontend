@@ -100,8 +100,6 @@ const TitleRating = styled.div`
 `;
 
 const Star = styled.img`
-  position: relative;
-  bottom: 1px;
   height: 12px;
   margin-right: 5px;
 `;

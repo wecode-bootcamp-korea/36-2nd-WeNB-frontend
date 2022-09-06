@@ -6,14 +6,18 @@ import ContentWeCoverInfo from './components/ContentWeCoverInfo';
 import ContentTitleInfo from './components/ContentTitleInfo';
 import ContentCalendar from './components/ContentCalendar';
 
-function LeftCol() {
+function LeftCol({ placeInfo, range, setRange, handleRemoveDays }) {
   return (
     <ContentLeftCol>
       <ContentTitleInfo />
       <ContentHomeBasicInfo />
       <ContentWeCoverInfo />
-      <ContentAmenitiesInfo />
-      <ContentCalendar />
+      <ContentAmenitiesInfo amenities={placeInfo.amenities} />
+      <ContentCalendar
+        range={range}
+        setRange={setRange}
+        handleRemoveDays={handleRemoveDays}
+      />
     </ContentLeftCol>
   );
 }

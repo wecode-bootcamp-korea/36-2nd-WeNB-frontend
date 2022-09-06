@@ -20,7 +20,7 @@ function ReviewModal({ reviewsList, handleXClickReviews }) {
                   <Number>5.0 &nbsp;·</Number>
                 </TitleRating>
                 <TitleReviews>
-                  후기 <NumReview>824</NumReview>개
+                  후기 <NumReview>{reviewsList.length}</NumReview>개
                 </TitleReviews>
               </TitleNavLeft>
             </ModalRatingTitle>
@@ -47,7 +47,7 @@ function ReviewModal({ reviewsList, handleXClickReviews }) {
                 <ReviewInnerContainer>
                   <ReviewContentContainer>
                     <ReviewContentTitle>
-                      <ReviewUser src="./images/Detail/uniyul.jpg" />
+                      <ReviewUser src="./images/Detail/hostProfile.jpg" />
                       <ReviewUserInfo>
                         <ReviewUserName>Anonymous</ReviewUserName>
                         <ReviewDate>2022년 9월</ReviewDate>

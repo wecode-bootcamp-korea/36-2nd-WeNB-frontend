@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-function ContentAmenitiesInfo() {
-  const [amenities, setAmenities] = useState([]);
-
-  useEffect(() => {
-    fetch('./data/Detail/amenitiesList.json')
-      .then(response => response.json())
-      .then(data => setAmenities(data));
-  }, []);
-
+function ContentAmenitiesInfo({ amenities }) {
   return (
     <AmenitiesContainer>
       <AmenetiesTitle>숙소 편의시설</AmenetiesTitle>
       <Amenities>
         {amenities.map(amenity => (
           <Amenity key={amenity.id}>
-            <Icon src={amenity.src} className="icons" alt={amenity.name} />
+            <Icon
+              src={amenity.icon_image_url}
+              className="icons"
+              alt={amenity.name}
+            />
             <AmenityName>{amenity.name}</AmenityName>
           </Amenity>
         ))}
       </Amenities>
       <ButtonContainer>
-        <Button>편의시설 40개 모두 보기</Button>
+        <Button>편의시설 {amenities.length}개 모두 보기</Button>
       </ButtonContainer>
     </AmenitiesContainer>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from './components/Title';
 import Photos from './components/Photos';
@@ -26,9 +27,11 @@ const Detail = () => {
   });
   const [reviewModal, setReviewModal] = useState(false);
   const [mapModal, setMapModal] = useState(false);
+  const params = useParams();
+  const placeId = params.id;
 
   useEffect(() => {
-    fetch('./data/Detail/placeInfo.json', {
+    fetch(`http://3.34.160.18:3000/places/181`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -72,8 +75,8 @@ const Detail = () => {
             handleSeeMoreMap={handleSeeMoreMap}
             handleGoBackMap={handleGoBackMap}
           />
-          <Photos />
-          <Contents />
+          <Photos homePhotos={placeInfo.image_urls} />
+          <Contents placeInfo={placeInfo} placeId={placeId} />
           <Reviews
             placeInfo={placeInfo}
             reviewModal={reviewModal}
