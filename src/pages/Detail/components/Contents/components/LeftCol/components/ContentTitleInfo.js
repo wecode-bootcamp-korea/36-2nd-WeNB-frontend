@@ -6,7 +6,7 @@ function ContentTitleInfo() {
     <ContentTitleContainer>
       <ContentTitle>Uniyul님이 호스팅하는 공동 주택 전체</ContentTitle>
       <ContentHostProfile
-        src="./images/Detail/hostProfile.jpg"
+        src="/images/Detail/hostProfile.jpg"
         alt="hostProfile"
       />
     </ContentTitleContainer>

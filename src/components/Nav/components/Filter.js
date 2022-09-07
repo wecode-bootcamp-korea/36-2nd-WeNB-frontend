@@ -16,7 +16,7 @@ const Filter = ({ onSetIsFilterVisible }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://10.58.2.70:3000/places/amenities', {
+    fetch('http://3.34.160.18:3000/places/amenities', {
       method: 'GET',
       header: { 'Content-Type': 'application/json' },
     })

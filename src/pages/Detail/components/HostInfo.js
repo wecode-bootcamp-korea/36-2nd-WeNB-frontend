@@ -8,7 +8,7 @@ function HostInfo({ placeInfo }) {
     <HostInfoContainer>
       <HostInfoTitle>
         <HostInfoProfile
-          src="./images/Detail/hostProfile.jpg"
+          src="/images/Detail/hostProfile.jpg"
           alt="userProfile"
         />
         <HostInfoName>
@@ -20,7 +20,7 @@ function HostInfo({ placeInfo }) {
         <HostDescription>
           <HostDescriptionNav>
             <HostRating>
-              <HostStar src="./images/Detail/icons/star.png" alt="star" />
+              <HostStar src="/images/Detail/icons/star.png" alt="star" />
               <NumberRatings>후기 {placeInfo.reviews.length}개</NumberRatings>
             </HostRating>
             <HostRating>

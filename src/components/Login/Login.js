@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import variables from '../../styles/variables';
 
 const Login = ({ onSetIsLoginVisible, onSetSingupVisible, type }) => {
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=4e0d6646adefd483161f55a91086d6d1&redirect_uri=http://localhost:3000/kakao`;
 
   return (
     <LoginModalWrap>

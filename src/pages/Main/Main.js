@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import API from '../../config';
 import OverView from './components/OverView';
 import styled from 'styled-components';
 import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 
 let count = 0;
 let timer;
@@ -11,7 +13,7 @@ const Main = () => {
   const [data, setData] = useState([]);
   const location = useLocation();
   useEffect(() => {
-    fetch('http://10.58.2.70:3000/places/?limit=20&offset=0', {
+    fetch('http://3.34.160.18:3000/places/?limit=20&offset=0', {
       method: 'GET',
       header: { 'Content-Type': `application/json` },
     })
@@ -25,7 +27,7 @@ const Main = () => {
     const makeList = () => {
       count++;
 
-      fetch(`http://10.58.2.70:3000/places/?limit=20&offset=${count}`)
+      fetch(`${API.place}${count}`)
         .then(response => response.json())
         .then(result => {
           // 기존 데이터에 새로운 데이터 합치기
@@ -55,7 +57,7 @@ const Main = () => {
     if (!location.search) {
       return;
     }
-    fetch(`http://10.58.2.70:3000/places/search${location.search}`)
+    fetch(`http://3.34.160.18:3000/places/search${location.search}`)
       .then(res => res.json())
       .then(data => setData(data));
   }, [location]);
@@ -68,6 +70,7 @@ const Main = () => {
           <OverView item={item} key={id} />
         ))}
       </MainWrap>
+      <Footer />
     </>
   );
 };

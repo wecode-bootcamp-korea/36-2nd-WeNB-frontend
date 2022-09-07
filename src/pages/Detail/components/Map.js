@@ -6,6 +6,8 @@ function Map({ placeInfo, handleSeeMoreMap, handleGoBackMap, mapModal }) {
   const mapElement = useRef(null);
   let latitude = placeInfo.latitude;
   let longitude = placeInfo.longitude;
+  console.log(latitude);
+  console.log(longitude);
 
   useEffect(() => {
     const { naver } = window;
@@ -88,7 +90,7 @@ const MapDescription = styled.p`
 `;
 
 const SeeMore = styled.p`
-  width: 60px;
+  width: 100px;
   margin-top: 32px;
   padding: 10px;
   font-size: 16px;

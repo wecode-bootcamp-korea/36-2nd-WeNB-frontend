@@ -9,7 +9,7 @@ const KakaoLoding = () => {
     const goToMain = () => {
       navigate('/');
     };
-    fetch(`http://10.58.4.138:3000/kakao/auth?code=${code}`, {
+    fetch(`http://3.34.160.18:3000/kakao/auth?code=${code}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ function ReviewModal({ reviewsList, handleXClickReviews }) {
       <ModalTitleContainer>
         <XMark
           onClick={handleXClickReviews}
-          src="./images/Detail/icons/xMark.png"
+          src="/images/Detail/icons/xMark.png"
         />
       </ModalTitleContainer>
       <ModalOuterWrap>
@@ -16,7 +16,7 @@ function ReviewModal({ reviewsList, handleXClickReviews }) {
             <ModalRatingTitle>
               <TitleNavLeft>
                 <TitleRating>
-                  <Star src="./images/Detail/icons/star.png" />
+                  <Star src="/images/Detail/icons/star.png" />
                   <Number>5.0 &nbsp;·</Number>
                 </TitleRating>
                 <TitleReviews>
@@ -47,7 +47,7 @@ function ReviewModal({ reviewsList, handleXClickReviews }) {
                 <ReviewInnerContainer>
                   <ReviewContentContainer>
                     <ReviewContentTitle>
-                      <ReviewUser src="./images/Detail/hostProfile.jpg" />
+                      <ReviewUser src="/images/Detail/hostProfile.jpg" />
                       <ReviewUserInfo>
                         <ReviewUserName>Anonymous</ReviewUserName>
                         <ReviewDate>2022년 9월</ReviewDate>

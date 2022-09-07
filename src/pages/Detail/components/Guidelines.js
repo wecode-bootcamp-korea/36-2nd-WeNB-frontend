@@ -51,8 +51,8 @@ function Guidelines() {
 export default Guidelines;
 
 const GuidelineContainer = styled.div`
-  height: 253px;
-  padding: 48px 0;
+  height: 300px;
+  padding: 48px 0px 125px 0px;
 `;
 
 const GuidelineTitle = styled.h2`

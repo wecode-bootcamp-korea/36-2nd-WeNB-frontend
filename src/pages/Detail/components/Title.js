@@ -24,7 +24,7 @@ function Title({
       <TitleNav>
         <TitleNavLeft>
           <TitleRating>
-            <Star src="./images/Detail/icons/star.png" />
+            <Star src="/images/Detail/icons/star.png" />
             <Number>5.0</Number>
           </TitleRating>
           <TitleReviews onClick={handleSeeMoreReviews}>

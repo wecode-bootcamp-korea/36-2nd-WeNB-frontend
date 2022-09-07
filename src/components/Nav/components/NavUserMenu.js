@@ -4,7 +4,7 @@ import Login from '../../Login/Login';
 import LoginBlackOut from '../../Login/components/LoginBlackOut';
 import variables from '../../../styles/variables';
 
-const NavUserMenu = () => {
+const NavUserMenu = ({ setIsUserVisible }) => {
   const tokenPossession = localStorage.getItem('TOKEN');
 
   const [isLoginVisible, setIsLoginVisible] = useState(false);
@@ -18,7 +18,7 @@ const NavUserMenu = () => {
   };
 
   const logoutHandle = () => {
-    fetch(`http://10.58.4.138:3000/kakao/logout`, {
+    fetch(`http://3.34.160.18:3000/kakao/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,8 +30,10 @@ const NavUserMenu = () => {
         if (data.message === 'success') {
           localStorage.removeItem('TOKEN');
           alert('로그아웃 성공');
+          setIsUserVisible(false);
         } else {
           alert('로그아웃 실패');
+          setIsUserVisible(false);
         }
       });
   };
@@ -49,7 +51,7 @@ const NavUserMenu = () => {
         </NavSignupLinkBox>
       )}
       {tokenPossession && (
-        <NavLogoutBox NavLogoutBox onClick={logoutHandle}>
+        <NavLogoutBox NavLogoutBox onClick={() => logoutHandle()}>
           로그아웃
         </NavLogoutBox>
       )}

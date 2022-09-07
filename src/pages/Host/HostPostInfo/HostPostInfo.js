@@ -72,10 +72,11 @@ function HostPostInfo() {
   };
 
   const hostRoomInfoPost = () => {
-    fetch(`${API.place}`, {
+    fetch(`${API.hostInfo}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: JSON.stringify({
         user_id: 3,
@@ -95,6 +96,7 @@ function HostPostInfo() {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         if (data.message === `place with ${data.place_id} place_id = Created`) {
           navigate(`/HostPostFacility/${data.place_id}`);
         } else {
@@ -117,7 +119,7 @@ function HostPostInfo() {
         </HostPostRoomSectionRegistrationWrap>
         <HostPostRoomSectionRegistration>
           {pageList !== 1 && <button onClick={pgDn}>이전</button>}
-          {pageList === 3 ? (
+          {pageList === 2 ? (
             <button
               onClick={() => {
                 pgUp();

@@ -50,7 +50,7 @@ function RightCol({
           </ReservationTitleWrap>
           <TitleNavLeft>
             <TitleRating>
-              <Star src="./images/Detail/icons/star.png" />
+              <Star src="/images/Detail/icons/star.png" />
               <Number>5.0 &nbsp;·</Number>
             </TitleRating>
             <TitleReviews>

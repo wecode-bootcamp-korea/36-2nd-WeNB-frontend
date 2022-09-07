@@ -111,6 +111,7 @@ const FooterWrapOn = styled.div`
 
   &.on {
     height: 327px;
+    padding-bottom: 120px;
   }
 
   & .closeBtn {
@@ -152,11 +153,13 @@ const LiList = styled.li`
 
 const FooterWrap = styled.div`
   position: fixed;
+  margin-top: 100px;
   bottom: 0;
   width: 100%;
   left: 0;
   background: #fff;
   padding: 20px 80px;
+  z-index: 13;
   box-sizing: border-box;
   border-top: 1px solid #ccc;
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slide from './Slide';
+import { Link } from 'react-router-dom';
 
 const OverView = props => {
   const { item } = props;
@@ -53,27 +54,32 @@ const OverView = props => {
 
   return (
     <OverViewWrap>
-      {/* <Link to={`../../main/${item.id}`}> */}
-      <SlideWrap>
-        <Slide item={item.image_urls} />
-      </SlideWrap>
-      <OverViewText>
-        <HostTitle>{item.name}</HostTitle>
-        <MyFont>{getMyKm(item.latitude, item.longitude)}km</MyFont>
-        <MyDay>
-          {month1[1]}월 {day1[0]}일~ {month2[1]}월 {day2[0]}일
-        </MyDay>
-        <div>
-          <StrongWrap>
-            <Storng>₩{myprice[0]}</Storng> /박
-          </StrongWrap>
-        </div>
-        <Score>★ {item.average_rate}</Score>
-      </OverViewText>
-      {/* </Link> */}
+      <LinkCover to={`/Detail/${item.id}`}>
+        <SlideWrap>
+          <Slide item={item.image_urls} />
+        </SlideWrap>
+        <OverViewText>
+          <HostTitle>{item.name}</HostTitle>
+          <MyFont>{getMyKm(item.latitude, item.longitude)}km</MyFont>
+          <MyDay>
+            {month1[1]}월 {day1[0]}일~ {month2[1]}월 {day2[0]}일
+          </MyDay>
+          <div>
+            <StrongWrap>
+              <Storng>₩{myprice[0]}</Storng> /박
+            </StrongWrap>
+          </div>
+          <Score>★ {item.average_rate}</Score>
+        </OverViewText>
+      </LinkCover>
     </OverViewWrap>
   );
 };
+
+const LinkCover = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 
 const OverViewWrap = styled.div`
   width: 25%;

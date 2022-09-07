@@ -9,6 +9,8 @@ import Map from './components/Map';
 import HostInfo from './components/HostInfo';
 import Guidelines from './components/Guidelines';
 import Nav from '../../../src/components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
+import API from '../../config';
 
 const Detail = () => {
   const [placeInfo, setPlaceInfo] = useState({
@@ -25,13 +27,14 @@ const Detail = () => {
     reviews: [{}],
     amenities: [{}],
   });
+  console.log('placeInfo', placeInfo);
   const [reviewModal, setReviewModal] = useState(false);
   const [mapModal, setMapModal] = useState(false);
   const params = useParams();
   const placeId = params.id;
-
+  console.log('placeId', placeId);
   useEffect(() => {
-    fetch(`http://3.34.160.18:3000/places/181`, {
+    fetch(`${API.detail}${placeId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +44,7 @@ const Detail = () => {
       .then(data => {
         setPlaceInfo(data[0]);
       });
-  }, []);
+  }, [placeId]);
 
   const handleSeeMoreReviews = () => {
     setReviewModal(!reviewModal);
@@ -92,6 +95,7 @@ const Detail = () => {
           <HostInfo placeInfo={placeInfo} />
           <Guidelines />
         </DetailSubContainer>
+        <Footer />
       </DetailMainContainer>
     </>
   );
@@ -103,9 +107,10 @@ const DetailMainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  width: 1143px;
   height: 100vh;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   background-color: #fff;

@@ -16,14 +16,14 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/Detail" element={<Detail />} />
+          <Route path="/Detail/:id" element={<Detail />} />
           <Route path="/Host" element={<Host />} />
           <Route path="/HostPostInfo" element={<HostPostInfo />} />
           <Route
             path="/HostPostFacility/:placeID"
             element={<HostFacilities />}
           />
-          <Route path="/HostPostImage" element={<HostPostImage />} />
+          <Route path="/HostPostImage/:placeID" element={<HostPostImage />} />
           <Route path="/kakao" element={<KakaoLoding />} />
         </Routes>
       </BrowserRouter>

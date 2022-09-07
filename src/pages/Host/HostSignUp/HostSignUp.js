@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import variables from '../../../styles/variables';
+import API from '../../../config';
 
 function HostSignUp() {
   const [hostInfo, setHostInfo] = useState({
@@ -18,13 +19,13 @@ function HostSignUp() {
   const navigate = useNavigate();
 
   const hostInfoPost = () => {
-    fetch(`http://10.58.4.165:3000/host/register`, {
+    fetch(`${API.hostSignUp}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: JSON.stringify({
-        userId: 3,
         email: hostInfo.email,
         phone: hostInfo.phone,
       }),

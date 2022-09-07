@@ -13,7 +13,7 @@ function Reviews({
       <ReviewsTitle>
         <TitleNavLeft>
           <TitleRating>
-            <Star src="./images/Detail/icons/star.png" />
+            <Star src="/images/Detail/icons/star.png" />
             <Number>5.0 &nbsp;&nbsp;·</Number>
           </TitleRating>
           <TitleReviews>
@@ -55,7 +55,7 @@ function Reviews({
             <ReviewInnerContainer>
               <ReviewContentContainer>
                 <ReviewContentTitle>
-                  <ReviewUser src="./images/Detail/hostProfile.jpg" />
+                  <ReviewUser src="/images/Detail/hostProfile.jpg" />
                   <ReviewUserInfo>
                     <ReviewUserName>Anonymous</ReviewUserName>
                     <ReviewDate>2022년 9월</ReviewDate>
@@ -103,6 +103,7 @@ const ReviewsContainer = styled.div`
 `;
 
 const ReviewsTitle = styled.div`
+  width: 100%;
   height: 26px;
   margin-bottom: 32px;
 `;
@@ -335,7 +336,7 @@ const ReviewBottom = styled.div`
 `;
 
 const SeeMore = styled.p`
-  width: 100px;
+  width: 120px;
   padding-left: 10px;
   color: #222;
   font-size: 14px;

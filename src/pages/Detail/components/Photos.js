@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
 function Photos({ homePhotos }) {
   const [photos, setPhotos] = useState([{ id: '', src: '' }]);
-
   useEffect(() => {
-    fetch('./data/Detail/homePhotos.json')
+    fetch('/data/Detail/homePhotos.json')
       .then(response => response.json())
       .then(data => setPhotos(data));
   }, []);
-
   return (
     <PhotoContainer>
       <InnerContainer>
@@ -31,15 +28,12 @@ function Photos({ homePhotos }) {
     </PhotoContainer>
   );
 }
-
 export default Photos;
-
 const PhotoContainer = styled.div`
   width: 1143px;
   height: 545px;
   padding-top: 24px;
 `;
-
 const InnerContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -47,23 +41,19 @@ const InnerContainer = styled.div`
   grid-template-columns: 50% 50%;
   grid-gap: 3px;
 `;
-
 const PhotoLeft = styled.div`
   width: 567.69px;
   height: 545px;
-
   .photoLeft {
     border-radius: 10px 0 0 10px;
   }
 `;
-
 const Photo = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   cursor: pointer;
 `;
-
 const PhotoRight = styled.div`
   display: grid;
   grid-template-rows: 50% 50%;
@@ -72,14 +62,12 @@ const PhotoRight = styled.div`
   overflow: hidden;
   border-radius: 0 10px 10px 0;
 `;
-
 const PhotoOne = styled.div`
   width: 283.83px;
   height: 272.5px;
   object-fit: cover;
   cursor: pointer;
 `;
-
 const PhotoButton = styled.button`
   position: relative;
   bottom: 65px;
@@ -96,7 +84,6 @@ const PhotoButton = styled.button`
   font-size: 14px;
   cursor: pointer;
 `;
-
 const PhotoIcon = styled.img`
   height: 14px;
   width: 14px;

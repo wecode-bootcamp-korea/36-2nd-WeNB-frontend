@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link /* , Navigate */, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import API from '../../../config';
 import HostButton from './HostButton';
 import styled from 'styled-components';
@@ -9,10 +9,11 @@ function HostPostFacility() {
   const [facilities, setFacilities] = useState([]);
   const [selectFacilities, setSelectFacilities] = useState([]);
   const placeID = useParams();
-
+  console.log(placeID.placeID);
   useEffect(() => {
     fetch(`${API.amenities}`, {
       method: 'GET',
+      headers: { authorization: localStorage.getItem('TOKEN') },
     })
       .then(res => res.json())
       .then(setFacilities);
@@ -42,11 +43,13 @@ function HostPostFacility() {
     if (a < b) return -1;
   });
 
+  const navigate = useNavigate();
   const facilitiesPost = () => {
     fetch(`${API.amenitiesPost}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: JSON.stringify({
         place_id: Number(placeID.placeID),
@@ -55,12 +58,11 @@ function HostPostFacility() {
     })
       .then(res => res.json())
       .then(data => {
-        // To do : 백엔드 통신 완료 후 navigate 설정
-        /* if (data.message === 'amenitiesRegistered') {
-          Navigate('/HostPostImage');
+        if (data.message === 'amenitiesRegistered') {
+          navigate(`/HostPostImage/${placeID.placeID}`);
         } else {
           alert('Error');
-        } */
+        }
       });
   };
 

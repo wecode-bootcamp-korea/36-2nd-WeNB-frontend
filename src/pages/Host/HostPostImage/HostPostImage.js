@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import API from '../../../config';
 import styled from 'styled-components';
 import variables from '../../../styles/variables';
@@ -40,21 +40,31 @@ function HostPostImage() {
     console.log(values);
   } */
   /* console.log(Object.keys(fileData)); */
+  const placeID = useParams();
+  const navigate = useNavigate();
+  console.log(placeID);
   const imageFilePost = () => {
     const fileData = new FormData();
 
     for (let i = 0; i < imageFileList.length; i++) {
       fileData.append(`fileList_${i}`, imageFileList[i]);
     }
-    fileData.append('place_id', 245);
+    fileData.append('place_id', Number(placeID.placeID));
 
     fetch(`${API.imagePost}`, {
       method: 'POST',
       headers: {
-        'Content-Type': `multipart/form-data`,
+        'Content-Type': `Multipart/form-data`,
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: fileData,
-    }).then(res => res.json());
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          navigate('/');
+        }
+      });
   };
 
   return (
@@ -108,11 +118,9 @@ function HostPostImage() {
           </HostPostRoomSectionImagesWrap>
         </HostPostRoomSectionRegistrationWrap>
         <HostPostRoomSectionRegistration>
-          <Link to="/">
-            <HostPostRoomSectionRegistrationButton onClick={imageFilePost}>
-              등록
-            </HostPostRoomSectionRegistrationButton>
-          </Link>
+          <HostPostRoomSectionRegistrationButton onClick={imageFilePost}>
+            등록
+          </HostPostRoomSectionRegistrationButton>
         </HostPostRoomSectionRegistration>
       </HostPostRoomSectionContainer>
     </HostPostRoomContainer>
