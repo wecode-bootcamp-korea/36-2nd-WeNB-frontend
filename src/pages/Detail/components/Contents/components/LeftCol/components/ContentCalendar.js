@@ -30,7 +30,7 @@ export default ContentCalendar;
 
 const CalendarContainer = styled.div`
   height: 422px;
-  padding: 48px 0;
+  padding: 70px 0;
 `;
 
 const CalendarTitleContainer = styled.div`

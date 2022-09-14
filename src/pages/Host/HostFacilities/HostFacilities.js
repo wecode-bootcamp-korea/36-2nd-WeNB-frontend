@@ -58,7 +58,8 @@ function HostPostFacility() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message === 'amenitiesRegistered') {
+        console.log(data);
+        if (data.message !== 'amenitiesRegistered') {
           navigate(`/HostPostImage/${placeID.placeID}`);
         } else {
           alert('Error');

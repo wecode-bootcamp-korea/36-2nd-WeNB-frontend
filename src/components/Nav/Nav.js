@@ -22,7 +22,11 @@ const Nav = () => {
     navigate('/');
   };
   const goToHost = () => {
-    navigate('/Host');
+    if (!localStorage.getItem('TOKEN')) {
+      navigate('/Host');
+    } else {
+      navigate('/HostPostFacility/127');
+    }
   };
   return (
     <>

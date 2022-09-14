@@ -17,13 +17,13 @@ function RightCol({
   handleRemoveDays,
 }) {
   const onPostReservation = () => {
-    fetch(`http://10.58.4.165:3000/place/reservation`, {
+    fetch(`http://3.34.160.18:3000/place/reservation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: JSON.stringify({
-        userId: 5,
         placeId: placeId,
         guestNumber: 2,
         availableFrom: checkIn,
@@ -32,6 +32,7 @@ function RightCol({
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         if (data.message === 'SUCCESS_RESERVATION') {
           alert('숙소 예약이 완료됐습니다.');
         } else {

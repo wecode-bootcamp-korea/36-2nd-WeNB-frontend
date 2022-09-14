@@ -7,7 +7,7 @@ import API from '../../../config';
 import HostPostPrice from './HostPostPrice';
 import HostPostCalendar from './Calendar/HostPostCalendar';
 //To do : Naver map API 이슈 해결 후 수정
-/* import HostPostMap from './HostPostMap'; */
+import HostPostMap from './HostPostMap';
 
 function HostPostInfo() {
   const [pageList, setPageList] = useState(1);
@@ -35,12 +35,12 @@ function HostPostInfo() {
       />
     ),
     //To do : Naver map API 이슈 해결 후 수정
-    /* 2: (
-      <HostPostMap key={2} roomData={roomData} storeRoomData={storeRoomData} />
-    ), */
     2: (
+      <HostPostMap key={2} roomData={roomData} storeRoomData={storeRoomData} />
+    ),
+    3: (
       <HostPostCalendar
-        key={2}
+        key={3}
         roomData={roomData}
         storeRoomData={storeRoomData}
         range={range}
@@ -96,7 +96,6 @@ function HostPostInfo() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data.message === `place with ${data.place_id} place_id = Created`) {
           navigate(`/HostPostFacility/${data.place_id}`);
         } else {
@@ -119,7 +118,7 @@ function HostPostInfo() {
         </HostPostRoomSectionRegistrationWrap>
         <HostPostRoomSectionRegistration>
           {pageList !== 1 && <button onClick={pgDn}>이전</button>}
-          {pageList === 2 ? (
+          {pageList === 3 ? (
             <button
               onClick={() => {
                 pgUp();
